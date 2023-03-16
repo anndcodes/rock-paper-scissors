@@ -5,43 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock-Paper-Scissors</title>
-  <style>
-   
-  body {
-  background: rgb(134, 184, 235);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.box  {
-  background: rgb(226, 225, 225);
-  text-align: center;
-  width: 640px;
-  height: 250px; 
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-  </style>
 </head>
 <body>
-  <div class="box">
-    <h1>Rock-Paper-Scissors</h1>
-    <p>This is a simple rock-paper-scissors game, open the console to play.</p>
-    <h3>Ways to open the console: </h3>
-      <ul>
-        <li>Press F12 on your keyboard </li>
-        <li>Right-click anywhere on the page and click inspect and choose the console tab</li>
-      </ul>
-  </div>
+  <button class="btn" id="rock">Rock</button>
+  <button class="btn" id="paper">Paper</button>
+  <button class="btn" id="scissors">Scissors</button>
 
+  <div class="rounds-results"></div>
+  
+  <div class="user-score">User Score: </div>
+  <div class="comp-score">Computer Score: </div>
+
+  <div class="final-result"></div>
   <script src="script.js"></script>
 </body>
 </html>

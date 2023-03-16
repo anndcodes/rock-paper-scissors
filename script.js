@@ -1,91 +1,128 @@
+// ============= variables ============ //
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+
+let roundsResults = document.querySelector(".rounds-results")
+let userScore = document.querySelector(".user-score");
+let compScore = document.querySelector(".comp-score");
+let finalResult = document.querySelector(".final-result");
+
+let winner = 0; 
+let pointsUser = 0;
+let pointsComputer = 0;
+
+
+// ============= function to get the computer choice ============ //
 function getComputerChoice() {
   let computerChoice = ['rock', 'paper', 'scissors'];
   let randomChoice = Math.floor(Math.random() * computerChoice.length);
   return computerChoice[randomChoice];
 }
 
+
+// ============= function to get the results of each round game ============ //
 function playRound(playerSelection, computerSelection) {
-  let winner = 0;
   //if winner equals to 0, the computer is the winner
   //if winner equals to 1 the player is the winner
   //and if winner equals to 2, it's a tie
 
   switch (true) {
     case playerSelection === "rock" && computerSelection === "paper":
-      console.log("You Lose! Paper beats Rock!");
+      roundsResults.textContent = "You Lose! Paper beats Rock!";
       winner = 0;
       break;
-    case playerSelection === "paper" && computerSelection === "scissors":
-      console.log("You Lose! Scissors beats Paper!");  
+    case playerSelection === "paper" && computerSelection === "scissors": 
+      roundsResults.textContent = "You Lose! Scissors beats Paper!";
       winner = 0;
       break;
     case playerSelection === "scissors" && computerSelection === "rock":
-      console.log("You Lose! Rock beats scissors!");
+      roundsResults.textContent = "You Lose! Rock beats scissors!";
       winner = 0;
       break;
-    case playerSelection === "rock" && computerSelection === "rock" || playerSelection === "paper" && computerSelection === "paper" || playerSelection === "scissors" && computerSelection === "scissors":
-      console.log("It's a tie!");
-      winner = 2;
+    case playerSelection === "paper" && computerSelection === "rock":
+      roundsResults.textContent = "You Win! Paper beats Rock";
+      winner = 1;
       break;
-      case playerSelection === "paper" && computerSelection === "rock":
-        console.log("You Win! Paper beats Rock");
-        winner = 1;
-        break;
-      case playerSelection === "scissors" && computerSelection === "paper":
-        console.log("You Win! Scissors beats Paper");
-        winner = 1;
-        break;
-      case playerSelection === "rock" && computerSelection === "scissors":
-        console.log("You Win! Rock beats Scissors!");
-        winner = 1;
-        break;
+    case playerSelection === "scissors" && computerSelection === "paper":
+      roundsResults.textContent = "You Win! Scissors beats Paper";
+      winner = 1;
+      break;
+    case playerSelection === "rock" && computerSelection === "scissors":
+      roundsResults.textContent = "You Win! Rock beats Scissors!";
+      winner = 1;
+      break;
     default: 
-      console.log("Enter a valid option.");
+      roundsResults.textContent = "It's a tie!";
+      winner = 2;
   }
-
   return winner;
 }
 
 
-
-function game() {
-  let pointsUser = 0;
-  let pointsComputer = 0;
-  let tie = 0;
-
-  for (let i = 0; i < 5; i++) {
-    //the player enter a input and play the game for 5 rounds
-    let playerSelection = prompt('Choose between rock, paper or scissors');
-    playerSelection = playerSelection.toLowerCase();
-    console.log(`${i+1} The player has chosen ${playerSelection}`);
-
-    let computerSelection = getComputerChoice();
-    console.log(`${i+1} The computer has chosen ${computerSelection}`);
-
-    let finalWinner = playRound(playerSelection, computerSelection);
-    // console.log(finalWinner);
-
-    
-    if(finalWinner === 1) {
-      pointsUser++;
-    } else if(finalWinner === 0) {
-      pointsComputer++;
-    } else {
-      tie++;
-    }
-    
+// ============= function to display the score of each round game ============ //
+function score() {
+  let btnReset = document.createElement("button");
+  btnReset.classList.add("clear");
+  btnReset.innerHTML = "Reset game";
+  
+  if(winner === 1) {
+    pointsUser += 1;
+    userScore.textContent = `User Score: ${pointsUser}`;
+  } else if(winner === 0) {
+    pointsComputer += 1;
+    compScore.textContent = `Computer Score: ${pointsComputer}`
   }
+  ////
+  if(pointsUser === 5){
+    finalResult.textContent = "Congrats! You are the winner!"
 
-  //the player that have more points will be the winner of the game.
+    document.body.appendChild(btnReset);
+    btnReset.addEventListener("click", () => {
+    pointsComputer = 0;
+    pointsUser = 0;
+    roundsResults.textContent = "";
+    userScore.textContent = "User Score: 0";
+    compScore.textContent = "Computer Score: 0";
+    finalResult.textContent = "";
+    btnReset.style.display = 'none';
+    })
+  } else if(pointsComputer === 5){
+    finalResult.textContent = "Oops, the computer has won the game.";
 
-  if(pointsUser > pointsComputer) {
-    console.log("Congratulations! You are the winner!");
-  } else if(pointsComputer > pointsUser) {
-    console.log("Oops, you lost. The computer has won the game!");
-  } else {
-    console.log("OMG! It's a tie!!");
-  }
+    document.body.appendChild(btnReset);
+    btnReset.addEventListener("click", () => {
+    pointsComputer = 0;
+    pointsUser = 0;
+    roundsResults.textContent = "";
+    userScore.textContent = "User Score: 0";
+    compScore.textContent = " Computer score: 0";
+    finalResult.textContent = "";
+    })
+  } 
   
 }
 
-console.log(game());
+
+// ============= function to actually play the round games ============ //
+function game() {
+  rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+
+    score();
+  })
+
+  paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+
+    score();
+  })
+
+  scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+
+    score();
+  })
+}
+
+game();
