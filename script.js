@@ -14,6 +14,9 @@ let winner = 0;
 let pointsUser = 0;
 let pointsComputer = 0;
 
+let gamePlay = document.querySelector(".game-play");
+let intro = document.querySelector(".intro");
+let startGame = document.querySelector("#start-game");
 
 // ============= function to get the computer choice ============ //
 function getComputerChoice() {
@@ -140,4 +143,15 @@ function game() {
   })
 }
 
-game();
+// ============= function that insert a start page before game play =========== //
+function start() {
+  gamePlay.setAttribute("hidden", "");
+  
+  startGame.addEventListener("click", () => {
+    gamePlay.removeAttribute("hidden");
+  game();
+    intro.setAttribute("hidden", "");
+  })
+}
+
+start()
