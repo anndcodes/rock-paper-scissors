@@ -68,11 +68,15 @@ function playRound(playerSelection, computerSelection) {
 function gameReset() {
   let btnReset = document.createElement("button");
   btnReset.classList.add("clear");
-  btnReset.innerHTML = "Reset game";
+  btnReset.innerHTML = "play again";
   
   btn.forEach(btn =>{
     btn.setAttribute("disabled", "");
   });
+
+  let gameOverMsg = document.createElement("p");
+  gameOverMsg.textContent = "game over, wanna play again?";
+  document.body.appendChild(gameOverMsg);
 
   document.body.appendChild(btnReset);
   btnReset.addEventListener("click", () => {
@@ -86,6 +90,7 @@ function gameReset() {
     compScore.textContent = "Computer Score: 0";
     finalResult.textContent = "";
     btnReset.style.display = 'none';
+    gameOverMsg.style.display = 'none';
   });
 }
 
