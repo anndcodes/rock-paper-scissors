@@ -8,6 +8,8 @@ let userScore = document.querySelector(".user-score");
 let compScore = document.querySelector(".comp-score");
 let finalResult = document.querySelector(".final-result");
 
+let btn = Array.from(document.getElementsByClassName("btn"));
+
 let winner = 0; 
 let pointsUser = 0;
 let pointsComputer = 0;
@@ -60,6 +62,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
+
 // ============= function to display the score of each round game ============ //
 function score() {
   let btnReset = document.createElement("button");
@@ -75,10 +78,16 @@ function score() {
   }
   ////
   if(pointsUser === 5){
+    
     finalResult.textContent = "Congrats! You are the winner!"
-
+    btn.forEach(btn =>{
+      btn.setAttribute("disabled", "");
+    });
     document.body.appendChild(btnReset);
     btnReset.addEventListener("click", () => {
+      btn.forEach(btn =>{
+        btn.removeAttribute("disabled");
+      });
     pointsComputer = 0;
     pointsUser = 0;
     roundsResults.textContent = "";
@@ -89,15 +98,21 @@ function score() {
     })
   } else if(pointsComputer === 5){
     finalResult.textContent = "Oops, the computer has won the game.";
-
+    btn.forEach(btn =>{
+      btn.setAttribute("disabled", "");
+    });
     document.body.appendChild(btnReset);
     btnReset.addEventListener("click", () => {
+      btn.forEach(btn =>{
+        btn.removeAttribute("disabled");
+      });
     pointsComputer = 0;
     pointsUser = 0;
     roundsResults.textContent = "";
     userScore.textContent = "User Score: 0";
     compScore.textContent = " Computer score: 0";
     finalResult.textContent = "";
+    btnReset.style.display = 'none';
     })
   } 
   
