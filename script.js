@@ -64,33 +64,21 @@ function playRound(playerSelection, computerSelection) {
   return winner;
 }
 
-
-
-// ============= function to display the score of each round game ============ //
-function score() {
+// ============ function to reset the game ========
+function gameReset() {
   let btnReset = document.createElement("button");
   btnReset.classList.add("clear");
   btnReset.innerHTML = "Reset game";
   
-  if(winner === 1) {
-    pointsUser += 1;
-    userScore.textContent = `User Score: ${pointsUser}`;
-  } else if(winner === 0) {
-    pointsComputer += 1;
-    compScore.textContent = `Computer Score: ${pointsComputer}`
-  }
-  ////
-  if(pointsUser === 5){
-    
-    finalResult.textContent = "Congrats! You are the winner!"
+  btn.forEach(btn =>{
+    btn.setAttribute("disabled", "");
+  });
+
+  document.body.appendChild(btnReset);
+  btnReset.addEventListener("click", () => {
     btn.forEach(btn =>{
-      btn.setAttribute("disabled", "");
+    btn.removeAttribute("disabled");
     });
-    document.body.appendChild(btnReset);
-    btnReset.addEventListener("click", () => {
-      btn.forEach(btn =>{
-        btn.removeAttribute("disabled");
-      });
     pointsComputer = 0;
     pointsUser = 0;
     roundsResults.textContent = "";
@@ -98,27 +86,28 @@ function score() {
     compScore.textContent = "Computer Score: 0";
     finalResult.textContent = "";
     btnReset.style.display = 'none';
-    })
+  });
+}
+
+
+// ============= function to display the score of each round game and winner ============ //
+function score() {  
+  if(winner === 1) {
+    pointsUser += 1;
+    userScore.textContent = `User Score: ${pointsUser}`;
+  } else if(winner === 0) {
+    pointsComputer += 1;
+    compScore.textContent = `Computer Score: ${pointsComputer}`
+  }
+
+  ////
+  if(pointsUser === 5){
+    finalResult.textContent = "Congrats! You are the winner!";
+    gameReset();
   } else if(pointsComputer === 5){
     finalResult.textContent = "Oops, the computer has won the game.";
-    btn.forEach(btn =>{
-      btn.setAttribute("disabled", "");
-    });
-    document.body.appendChild(btnReset);
-    btnReset.addEventListener("click", () => {
-      btn.forEach(btn =>{
-        btn.removeAttribute("disabled");
-      });
-    pointsComputer = 0;
-    pointsUser = 0;
-    roundsResults.textContent = "";
-    userScore.textContent = "User Score: 0";
-    compScore.textContent = " Computer score: 0";
-    finalResult.textContent = "";
-    btnReset.style.display = 'none';
-    })
+    gameReset();
   } 
-  
 }
 
 
