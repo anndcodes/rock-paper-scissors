@@ -144,7 +144,8 @@ function start() {
   startGame.addEventListener("click", () => {
     gamePlay.removeAttribute("hidden");
   game();
-    intro.setAttribute("hidden", "");
+    // intro.setAttribute("hidden", "");
+    intro.style.display = 'none';
   })
 }
 
