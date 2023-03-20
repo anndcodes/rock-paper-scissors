@@ -156,3 +156,18 @@ function darkMode() {
   let body = document.body;
   body.classList.toggle("dark-mode");
 }
+
+// ========== animated title function ======== //
+let i = 0;
+let title = "Rock Paper Scissors";
+let speed = 60;
+
+function typeWriter() {
+  if(i < title.length) {
+    document.getElementById("title").innerHTML += title.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+typeWriter()
