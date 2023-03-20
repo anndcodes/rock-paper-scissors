@@ -99,10 +99,10 @@ function gameReset() {
 function score() {  
   if(winner === 1) {
     pointsUser += 1;
-    userScore.textContent = `User Score: ${pointsUser}`;
+    userScore.textContent = `user: ${pointsUser}`;
   } else if(winner === 0) {
     pointsComputer += 1;
-    compScore.textContent = `Computer Score: ${pointsComputer}`
+    compScore.textContent = `computer: ${pointsComputer}`;
   }
 
   ////
