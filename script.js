@@ -150,3 +150,9 @@ function start() {
 }
 
 start()
+
+// ========= dark mode button function ========= // 
+function darkMode() {
+  let body = document.body;
+  body.classList.toggle("dark-mode");
+}

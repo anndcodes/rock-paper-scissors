@@ -83,3 +83,31 @@ button {
   background: #ff0;
  }
 
+
+ /* ====== dark mode button ======= */
+ .dark-mode {
+  background: #111;
+  color: #fff;
+ }
+
+ .dark-mode #start-game, .btn-dark-mode {
+  color: #8a864c;
+ }
+
+.material-symbols-outlined {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  background: #ff0;
+  border-radius: 50%;
+  padding: 1.2rem;
+}
+
+.material-symbols-outlined:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  transform: translateY(-1px);
+}
+
+.material-symbols-outlined:active {
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+}
