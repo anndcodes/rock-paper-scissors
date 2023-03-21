@@ -19,6 +19,21 @@ let gamePlay = document.querySelector(".game-play");
 let intro = document.querySelector(".intro");
 let startGame = document.querySelector("#start-game");
 
+// ========== animated title function ======== //
+let i = 0;
+let speed = 60;
+let title1 = "Rock Paper Scissors";
+
+function typeWriter() {
+  if(i < title1.length) {
+    document.getElementById("title1").innerHTML += title1.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+typeWriter()
+
 
 // ============= function to get the computer choice ============ //
 function getComputerChoice() {
@@ -101,6 +116,7 @@ function gameReset() {
     userScore.textContent = "user Score: 0";
     compScore.textContent = "computer Score: 0";
     finalResult.textContent = "";
+    finalResult.removeAttribute('style');
     btnReset.style.display = 'none';
   });
 }
@@ -115,15 +131,25 @@ function score() {
     pointsComputer += 1;
     compScore.textContent = `computer: ${pointsComputer}`;
   }
-
+  
   ////
+  
   if(pointsUser === 5){
     finalResult.textContent = "Game over! Congrats! You are the winner! Wanna play again?";
+    if(finalResult !== ""){
+      finalResult.setAttribute('style', 'animation: typing 3.5s steps(30,end)');
+    } ;
+    
     gameReset();
   } else if(pointsComputer === 5){
     finalResult.textContent = "Game over! Oops, the computer has won the game. Wanna play again?";
+    if(finalResult !== ""){
+      finalResult.setAttribute('style', 'animation: typing 3.5s steps(30,end)');
+    } ;
+    
     gameReset();
   } 
+ 
 }
 
 
@@ -167,17 +193,5 @@ function darkMode() {
   body.classList.toggle("dark-mode");
 }
 
-// ========== animated title function ======== //
-let i = 0;
-let title1 = "Rock Paper Scissors";
-let speed = 60;
 
-function typeWriter() {
-  if(i < title1.length) {
-    document.getElementById("title1").innerHTML += title1.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
 
-typeWriter()
