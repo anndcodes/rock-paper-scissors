@@ -9,6 +9,7 @@ let compScore = document.querySelector(".comp-score");
 let finalResult = document.querySelector(".final-result");
 
 let btn = Array.from(document.getElementsByClassName("btn"));
+let title = Array.from(document.getElementsByClassName("title"));
 
 let winner = 0; 
 let pointsUser = 0;
@@ -17,6 +18,7 @@ let pointsComputer = 0;
 let gamePlay = document.querySelector(".game-play");
 let intro = document.querySelector(".intro");
 let startGame = document.querySelector("#start-game");
+
 
 // ============= function to get the computer choice ============ //
 function getComputerChoice() {
@@ -66,31 +68,40 @@ function playRound(playerSelection, computerSelection) {
 
 // ============ function to reset the game ========
 function gameReset() {
+  // cleaning the screen to only show final winner and reset button
   let btnReset = document.createElement("button");
   btnReset.classList.add("clear");
-  btnReset.innerHTML = "play again";
+  btnReset.innerHTML = "play";
   
+  roundsResults.textContent = "";
+  userScore.textContent = "";
+  compScore.textContent = "";
+
   btn.forEach(btn =>{
-    btn.setAttribute("disabled", "");
+    btn.setAttribute("hidden", "");
+  });
+  
+  title.forEach(title =>{
+    title.setAttribute("hidden", "");
   });
 
-  let gameOverMsg = document.createElement("p");
-  gameOverMsg.textContent = "game over, wanna play again?";
-  document.body.appendChild(gameOverMsg);
-
+  // reset button function
   document.body.appendChild(btnReset);
   btnReset.addEventListener("click", () => {
     btn.forEach(btn =>{
-    btn.removeAttribute("disabled");
+    btn.removeAttribute("hidden");
     });
+
+    title.forEach(title =>{
+      title.removeAttribute("hidden");
+    });
+
     pointsComputer = 0;
     pointsUser = 0;
-    roundsResults.textContent = "";
-    userScore.textContent = "User Score: 0";
-    compScore.textContent = "Computer Score: 0";
+    userScore.textContent = "user Score: 0";
+    compScore.textContent = "computer Score: 0";
     finalResult.textContent = "";
     btnReset.style.display = 'none';
-    gameOverMsg.style.display = 'none';
   });
 }
 
@@ -107,10 +118,10 @@ function score() {
 
   ////
   if(pointsUser === 5){
-    finalResult.textContent = "Congrats! You are the winner!";
+    finalResult.textContent = "Game over! Congrats! You are the winner! Wanna play again?";
     gameReset();
   } else if(pointsComputer === 5){
-    finalResult.textContent = "Oops, the computer has won the game.";
+    finalResult.textContent = "Game over! Oops, the computer has won the game. Wanna play again?";
     gameReset();
   } 
 }
@@ -144,7 +155,6 @@ function start() {
   startGame.addEventListener("click", () => {
     gamePlay.removeAttribute("hidden");
   game();
-    // intro.setAttribute("hidden", "");
     intro.style.display = 'none';
   })
 }
@@ -159,12 +169,12 @@ function darkMode() {
 
 // ========== animated title function ======== //
 let i = 0;
-let title = "Rock Paper Scissors";
+let title1 = "Rock Paper Scissors";
 let speed = 60;
 
 function typeWriter() {
-  if(i < title.length) {
-    document.getElementById("title").innerHTML += title.charAt(i);
+  if(i < title1.length) {
+    document.getElementById("title1").innerHTML += title1.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
   }
