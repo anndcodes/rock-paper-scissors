@@ -135,14 +135,14 @@ function score() {
   ////
   
   if(pointsUser === 5){
-    finalResult.textContent = "Game over! Congrats! You are the winner! Wanna play again?";
+    finalResult.textContent = "Congrats! You are the winner! Wanna play again?";
     if(finalResult !== ""){
       finalResult.setAttribute('style', 'animation: typing 3.5s steps(30,end)');
     } ;
     
     gameReset();
   } else if(pointsComputer === 5){
-    finalResult.textContent = "Game over! Oops, the computer has won the game. Wanna play again?";
+    finalResult.textContent = "Oops, the computer has won the game. Wanna play again?";
     if(finalResult !== ""){
       finalResult.setAttribute('style', 'animation: typing 3.5s steps(30,end)');
     } ;
