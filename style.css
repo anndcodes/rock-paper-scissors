@@ -163,12 +163,17 @@ button {
 }
 
  /* ====== dark mode ======= */
- .dark-mode {
+ body.dark-mode {
   background: #111;
   color: #fff;
  }
 
- .dark-mode #start-game, .btn-dark-mode, .btn, .clear {
+
+body.dark-mode #start-game {
+  color: #df9917;
+} 
+
+ .dark-mode .btn-dark-mode, .btn, .clear {
   color:#000;
  }
 
@@ -189,5 +194,3 @@ button {
 .material-symbols-outlined:active {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
 }
-
-
