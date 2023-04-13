@@ -101,7 +101,7 @@ function gameReset() {
   });
 
   // reset button function
-  document.body.appendChild(btnReset);
+  document.querySelector(".results").appendChild(btnReset);
   btnReset.addEventListener("click", () => {
     btn.forEach(btn =>{
     btn.removeAttribute("hidden");
