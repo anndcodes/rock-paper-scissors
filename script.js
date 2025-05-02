@@ -24,6 +24,10 @@ startGameBtn.addEventListener("click", () => {
   introParagraph.style.display = "none";
 })
 
+function getRandomComputerChoice() {
+  return options[Math.floor(Math.random() * options.length)];
+}
+
 
 
 
