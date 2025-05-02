@@ -35,6 +35,22 @@ function hasPlayerWonTheRound(player, computer) {
   );
 }
 
+function getRoundResults(playerOption) {
+  const computerOption = getRandomComputerChoice();
+
+  if (hasPlayerWonTheRound(playerOption, computerOption)) {
+    playerScore++;
+    return `Player wins! ${playerOption} beats ${computerOption}`;
+  } else if (computerOption === playerOption) {
+    return `It's a tie! Both chose ${playerOption}`;
+  } else {
+    computerScore++;
+    return `Computer wins! ${computerOption} beats ${playerOption}`;
+  }
+}
+
+
+
 function darkMode() {
   let body = document.body;
   body.classList.toggle("dark-mode");
