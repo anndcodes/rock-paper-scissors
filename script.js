@@ -11,10 +11,9 @@ const computerScoreElement = document.getElementById("computer-score");
 const optionsContainer = document.querySelector(".options-container");
 const scoreContainer = document.querySelector(".score-container");
 
-const rockBtn = document.getElementById("rock-btn")
+const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorsBtn = document.getElementById("scissors-btn");
-
 
 startGameBtn.addEventListener("click", () => {
   optionsContainer.style.display = "block";
@@ -22,31 +21,35 @@ startGameBtn.addEventListener("click", () => {
 
   startGameBtn.style.display = "none";
   introParagraph.style.display = "none";
-})
+});
 
 function getRandomComputerChoice() {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-
-
+function hasPlayerWonTheRound(player, computer) {
+  return (
+    (player === "rock" && computer === "scissors") ||
+    (player === "scissors" && computer === "paper") ||
+    (player === "paper" && computer === "rock")
+  );
+}
 
 function darkMode() {
   let body = document.body;
   body.classList.toggle("dark-mode");
 }
 
-
 let i = 0;
 let speed = 80;
 let title = "Rock Paper Scissors";
 
 function typeWriter() {
-  if(i < title.length) {
+  if (i < title.length) {
     document.getElementById("title1").innerHTML += title.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
   }
 }
 
-typeWriter()
+typeWriter();
