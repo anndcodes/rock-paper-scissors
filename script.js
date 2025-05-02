@@ -11,6 +11,9 @@ const computerScoreElement = document.getElementById("computer-score");
 const optionsContainer = document.querySelector(".options-container");
 const scoreContainer = document.querySelector(".score-container");
 
+const roundResultMsg = document.querySelector(".results-msg");
+const winnerMsg = document.querySelector(".winner-msg");
+
 const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorsBtn = document.getElementById("scissors-btn");
@@ -49,6 +52,22 @@ function getRoundResults(playerOption) {
   }
 }
 
+
+function showResults(playerOption) {
+  roundResultMsg.textContent = getRoundResults(playerOption);
+  playerScoreElement.textContent = playerScore;
+  computerScoreElement.textContent = computerScore;
+}
+
+rockBtn.addEventListener("click", () => {
+  showResults("rock");
+})
+paperBtn.addEventListener("click", () => {
+  showResults("paper");
+})
+scissorsBtn.addEventListener("click", () => {
+  showResults("scissors");
+})
 
 
 function darkMode() {
