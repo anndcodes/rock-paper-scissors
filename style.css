@@ -178,6 +178,10 @@ button {
   margin: 0 auto;
 }
 
+#reset-game-btn {
+  display: none;
+}
+
 @keyframes typing {
   from {
     width: 0;
