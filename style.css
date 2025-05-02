@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
   --light-red: #e04700;
@@ -30,7 +29,7 @@ body {
   overflow: hidden;
   background: var(--white);
   color: var(--black);
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
 }
 
 main {
@@ -49,7 +48,7 @@ main {
 }
 
 h1 {
-  font-family: 'Silkscreen', cursive;
+  font-family: "Silkscreen", cursive;
   font-size: 5.2rem;
 }
 
@@ -64,10 +63,10 @@ h1 {
 
 @keyframes blink {
   from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -84,7 +83,12 @@ button {
 }
 
 /* start game button */
-#start-game {
+.options-container,
+.score-container {
+  display: none;
+}
+
+#start-game-btn {
   position: relative;
   margin-top: 5rem;
   width: 1.5rem;
@@ -93,7 +97,7 @@ button {
   transition: all 0.2s ease;
 }
 
-#start-game:before {
+#start-game-btn:before {
   content: "";
   position: absolute;
   top: -4.5rem;
@@ -107,20 +111,21 @@ button {
   transition: all 0.3s ease;
 }
 
-#start-game span {
+#start-game-btn span {
   position: relative;
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
 
-#start-game:hover:before {
+#start-game-btn:hover:before {
   width: 290%;
   background-color: var(--light-red);
- }
+}
 
 /* ======== game play buttons ======== */
-.btn, .clear {
+.btn,
+.clear {
   margin-top: 5rem;
   margin-inline: 2rem;
   padding: 1.5rem 2.5rem;
@@ -132,10 +137,12 @@ button {
   transition: all ease 0.1s;
 }
 
-.btn:nth-child(-n+2)
-{ padding-inline: 3.5rem}
+.btn:nth-child(-n + 2) {
+  padding-inline: 3.5rem;
+}
 
-.btn:active, .clear:active {
+.btn:active,
+.clear:active {
   transform: translateY(5px);
   box-shadow: 0px 0px 0px 0px var(--light-shadow);
 }
@@ -147,10 +154,11 @@ button {
   align-items: center;
 }
 
-.user-score {
+.player-score {
   margin-top: 5rem;
 }
-.user-score, .comp-score {
+.player-score,
+.computer-score {
   font-size: 1.8rem;
   margin-left: 2.5rem;
 }
@@ -173,7 +181,8 @@ button {
 @keyframes typing {
   from {
     width: 0;
-  } to {
+  }
+  to {
     width: 100%;
   }
 }
@@ -202,7 +211,7 @@ footer {
   justify-content: center;
   align-items: flex-end;
   font-size: 1.4rem;
-  margin-top: -4rem; 
+  margin-top: -4rem;
   gap: 8px;
 }
 
@@ -215,11 +224,11 @@ a {
   color: var(--light-red);
 }
 
- /* ====== dark mode ======= */
- body.dark-mode {
+/* ====== dark mode ======= */
+body.dark-mode {
   background: var(--dark-mode);
   color: var(--white);
- }
+}
 
 body.dark-mode #start-game:before {
   background-color: var(--dark-red);

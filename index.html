@@ -27,23 +27,27 @@
     
     <!-- page intro -->
     <div class="intro">
-      <p class="intro-paragraph">Are you good at Rock Paper Scissors game? Yes? No? Find out, press start!</p>
-      <button id="start-game">
+      <p class="intro-paragraph">Are you good at Rock Paper Scissors game? Find out now, press start!</p>
+      <button id="start-game-btn">
         <span>start</span>
       </button>
     </div>
 
     <!-- game play -->
-    <div class="game-play">
-      <button class="btn" id="rock">rock</button>
-      <button class="btn" id="paper">paper</button>
-      <button class="btn" id="scissors">scissors</button>
-      <div class="user-score">user: </div>
-      <div class="comp-score">computer: </div>
-      <div class="results">
-        <div class="rounds-results"></div>
-        <div class="final-result"></div>
-      </div>
+    <div class="options-container">
+      <button class="btn" id="rock-btn">rock</button>
+      <button class="btn" id="paper-btn">paper</button>
+      <button class="btn" id="scissors-btn">scissors</button>
+    </div>
+    
+    <div class="score-container">
+      <strong>player score: <span id="player-score">0</span></strong>
+      <strong>computer score: <span id="computer-score">0</span> </strong>
+    </div>
+
+    <div class="results-container">
+      <p class="results-msg"></p>
+      <p class="winner-msg"></p>
     </div>
   </main>
   
