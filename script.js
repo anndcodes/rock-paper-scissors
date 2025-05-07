@@ -1,6 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
-const options = ["rock", "paper", "scissors"];
+const options = ["Rock", "Paper", "Scissors"];
 
 const startGameBtn = document.getElementById("start-game-btn");
 const introParagraph = document.querySelector(".intro-paragraph");
@@ -20,8 +20,8 @@ const scissorsBtn = document.getElementById("scissors-btn");
 const resetGameBtn = document.getElementById("reset-game-btn");
 
 startGameBtn.addEventListener("click", () => {
-  optionsContainer.style.display = "block";
-  scoreContainer.style.display = "block";
+  optionsContainer.style.display = "flex";
+  scoreContainer.style.display = "flex";
 
   startGameBtn.style.display = "none";
   introParagraph.style.display = "none";
@@ -33,9 +33,9 @@ function getRandomComputerChoice() {
 
 function hasPlayerWonTheRound(player, computer) {
   return (
-    (player === "rock" && computer === "scissors") ||
-    (player === "scissors" && computer === "paper") ||
-    (player === "paper" && computer === "rock")
+    (player === "Rock" && computer === "Scissors") ||
+    (player === "Scissors" && computer === "Paper") ||
+    (player === "Paper" && computer === "Rock")
   );
 }
 
@@ -75,20 +75,20 @@ function resetGame() {
   computerScoreElement.textContent = computerScore;
 
   resetGameBtn.style.display = "none";
-  optionsContainer.style.display = "block";
+  optionsContainer.style.display = "flex";
 
   winnerMsg.textContent = "";
   roundResultMsg.textContent = "";
 }
 
 rockBtn.addEventListener("click", () => {
-  showResults("rock");
+  showResults("Rock");
 });
 paperBtn.addEventListener("click", () => {
-  showResults("paper");
+  showResults("Paper");
 });
 scissorsBtn.addEventListener("click", () => {
-  showResults("scissors");
+  showResults("Scissors");
 });
 resetGameBtn.addEventListener("click", () => {
   resetGame();
@@ -101,6 +101,8 @@ function darkMode() {
 
 let i = 0;
 let speed = 80;
+let titleElement = document.getElementById("title1");
+let titleElement2 = document.getElementById("title2")
 let title = "Rock Paper Scissors";
 
 function typeWriter() {
@@ -111,4 +113,10 @@ function typeWriter() {
   }
 }
 
-typeWriter();
+if (window.innerWidth <= 768) {
+  titleElement.textContent = title;
+  titleElement2.textContent = ""
+  
+} else {
+  typeWriter();
+}
